@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhruv Sharma — AI/ML Engineer | Terminal Portfolio</title>
+<meta name="description" content="AI/ML Engineer specializing in LLM-powered agent systems. Interactive terminal portfolio — explore projects and skills through command-line navigation.">
+<meta name="author" content="Dhruv Sharma">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Fira+Code:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root,
+:root[data-theme="cyber"] {
+  --clr-bg: #0a0d14;
+  --clr-surface: rgba(10,13,20,0.92);
+  --clr-border: #1a2235;
+  --clr-text: #d8dee9;
+  --clr-muted: #6e7f99;
+  --clr-accent: #4082c4;
+  --clr-accent-rgb: 64,130,196;
+  --clr-accent2: #c678dd;
+  --clr-error: #ff6b6b;
+  --clr-success: #50fa7b;
+  --clr-prompt: #50fa7b;
+  --clr-primary: #4082c4;
+  --clr-command: #e0e6f0;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+:root[data-theme="nord"] {
+  --clr-bg: #2e3440;
+  --clr-surface: rgba(46,52,64,0.92);
+  --clr-border: #3b4252;
+  --clr-text: #eceff4;
+  --clr-muted: #7b88a1;
+  --clr-accent: #88c0d0;
+  --clr-accent-rgb: 136,192,208;
+  --clr-accent2: #b48ead;
+  --clr-error: #bf616a;
+  --clr-success: #a3be8c;
+  --clr-prompt: #a3be8c;
+  --clr-primary: #81a1c1;
+  --clr-command: #eceff4;
+  --font-mono: 'Fira Code', monospace;
+}
+:root[data-theme="solarized"] {
+  --clr-bg: #002b36;
+  --clr-surface: rgba(0,43,54,0.92);
+  --clr-border: #073642;
+  --clr-text: #fdf6e3;
+  --clr-muted: #839496;
+  --clr-accent: #2aa198;
+  --clr-accent-rgb: 42,161,152;
+  --clr-accent2: #d33682;
+  --clr-error: #dc322f;
+  --clr-success: #859900;
+  --clr-prompt: #859900;
+  --clr-primary: #268bd2;
+  --clr-command: #fdf6e3;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+:root[data-theme="dracula"] {
+  --clr-bg: #282a36;
+  --clr-surface: rgba(40,42,54,0.92);
+  --clr-border: #44475a;
+  --clr-text: #f8f8f2;
+  --clr-muted: #6272a4;
+  --clr-accent: #8be9fd;
+  --clr-accent-rgb: 139,233,253;
+  --clr-accent2: #ff79c6;
+  --clr-error: #ff5555;
+  --clr-success: #50fa7b;
+  --clr-prompt: #50fa7b;
+  --clr-primary: #bd93f9;
+  --clr-command: #f8f8f2;
+  --font-mono: 'Space Mono', monospace;
+}
+:root[data-theme="bloodwork"] {
+  --clr-bg: #0c0505;
+  --clr-surface: rgba(18,8,8,0.92);
+  --clr-border: #3a1414;
+  --clr-text: #f1dcdc;
+  --clr-muted: #8a5a5a;
+  --clr-accent: #ff3b3b;
+  --clr-accent-rgb: 255,59,59;
+  --clr-accent2: #ff9d3b;
+  --clr-error: #ff1f4d;
+  --clr-success: #d4ff3b;
+  --clr-prompt: #ff3b3b;
+  --clr-primary: #e3342f;
+  --clr-command: #f1dcdc;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--clr-accent) var(--clr-bg);background:var(--clr-bg)}
+body {
+  font-family:var(--font-mono),monospace;
+  color:var(--clr-text);
+  line-height:1.4;
+  overflow-x:hidden;
+  min-height:100vh;
+  background:transparent;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: -100vh; left: 0; width: 100vw; height: 300vh;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  background-size: 100% 8px;
+  animation: scanlinesDown 20s linear infinite;
+}
+@keyframes scanlinesDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+::selection{background:var(--clr-accent2);color:var(--clr-bg)}
+a{color:var(--clr-accent);text-decoration:none;transition:color .3s}
+a:hover{color:var(--clr-accent2);text-decoration:underline}
+a:focus-visible{outline:2px solid var(--clr-accent);outline-offset:2px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,13,20,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--clr-border)}
+nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:48px}
+.brand{font-weight:700;font-size:14px;color:var(--clr-text);letter-spacing:.02em}
+.brand span{color:var(--clr-accent)}
+.nav-links{display:flex;gap:24px;font-size:12px}
+.nav-links a{color:var(--clr-muted);letter-spacing:.04em;transition:all .2s;text-decoration:none}
+.nav-links a:hover{color:var(--clr-accent);text-decoration:underline;text-underline-offset:6px}
+@media(max-width:640px){.nav-links{display:none}}
+
+#hero{position:relative;z-index:10;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 16px;scroll-snap-align:start}
+
+.hero-shell{position:relative;display:flex;align-items:stretch;justify-content:center;width:100%;max-width:860px}
+
+.cmd-sidebar{position:absolute;top:0;bottom:0;right:calc(100% + 20px);width:310px;flex-shrink:0;display:flex;flex-direction:column;
+  background:var(--clr-surface);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(var(--clr-accent-rgb),0.15);
+  box-shadow:0 0 40px rgba(0,0,0,0.5);overflow:hidden}
+.cmd-sidebar-hd{padding:8px 14px;font-size:11px;letter-spacing:.06em;color:var(--clr-muted);
+  background:rgba(var(--clr-accent-rgb),0.06);border-bottom:1px solid rgba(var(--clr-accent-rgb),0.12);flex-shrink:0}
+.cmd-sidebar-list{padding:12px 14px;overflow-y:auto;overflow-x:hidden;font-size:12px;line-height:1.9}
+.cmd-sidebar-list dt{color:var(--clr-accent);font-weight:600;letter-spacing:.02em}
+.cmd-sidebar-list dd{color:var(--clr-muted);margin:0 0 8px;font-size:11px;overflow-wrap:break-word;word-break:break-word}
+
+@media(max-width:1600px){
+  .cmd-sidebar{display:none}
+}
+
+/*
+   GITHUB ACTIVITY PANEL — independent widget, right side.
+   To move it: edit the "position" line below (top/left/right).
+   To resize it: edit the "width" value below.*/
+.gh-panel{
+
+  position:absolute;top:0;bottom:0;left:calc(100% + 20px);
+  width:230px;
+  /* --------------------------------------------------- */
+  flex-shrink:0;display:flex;flex-direction:column;
+  background:var(--clr-surface);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(var(--clr-accent-rgb),0.15);
+  box-shadow:0 0 40px rgba(0,0,0,0.5);overflow:hidden}
+.gh-panel-bar{display:flex;align-items:center;padding:8px 14px;gap:6px;
+  background:rgba(var(--clr-accent-rgb),0.06);
+  border-bottom:1px solid rgba(var(--clr-accent-rgb),0.12);flex-shrink:0;position:relative}
+.gh-panel-bar .t-dot{width:9px;height:9px}
+.gh-panel-title{position:absolute;left:0;right:0;text-align:center;font-size:11px;color:var(--clr-muted);pointer-events:none;letter-spacing:.04em}
+.gh-panel-list{padding:12px 14px;overflow-y:auto;font-size:11.5px;line-height:1.6;flex:1;
+  scrollbar-width:thin;scrollbar-color:var(--clr-accent) var(--clr-bg)}
+.gh-panel-list::-webkit-scrollbar{width:5px}
+.gh-panel-list::-webkit-scrollbar-track{background:transparent}
+.gh-panel-list::-webkit-scrollbar-thumb{background:var(--clr-accent);border-radius:3px}
+.gh-ev{margin-bottom:11px;padding-bottom:11px;border-bottom:1px dashed rgba(var(--clr-accent-rgb),0.1)}
+.gh-ev:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.gh-ev-head{display:flex;gap:6px;align-items:baseline;color:var(--clr-muted)}
+.gh-ev-icon{flex-shrink:0}
+.gh-ev-repo{color:var(--clr-accent2);word-break:break-all}
+.gh-ev-detail{color:var(--clr-muted);opacity:.85;margin-top:2px;padding-left:16px;word-break:break-word}
+.gh-ev-time{color:var(--clr-muted);opacity:.5;font-size:10px;padding-left:16px}
+.gh-panel-status{padding:12px 14px;color:var(--clr-muted);font-size:11.5px}
+
+@media(max-width:1600px){
+  .gh-panel{display:none}
+}
+
+/* MOBILE OVERRIDE — shows both panels stacked below the
+   terminal on small screens only. Desktop (>1600px) side-by-side
+   layout and the 641-1600px hidden state are both untouched. */
+@media(max-width:640px){
+  .hero-shell{flex-direction:column;align-items:center;gap:16px}
+  .cmd-sidebar,.gh-panel{
+    display:flex !important;
+    position:static;
+    width:100%;
+    max-width:100%;
+  }
+  .cmd-sidebar-list,.gh-panel-list{max-height:240px}
+  .terminal{order:1}
+  .cmd-sidebar{order:2}
+  .gh-panel{order:3}
+}
+
+.terminal{width:100%;max-width:860px;min-height:460px;display:flex;flex-direction:column;
+  background:var(--clr-surface);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(var(--clr-accent-rgb),0.15);border-radius:0;
+  box-shadow:0 0 40px rgba(0,0,0,0.5),0 0 80px rgba(var(--clr-accent-rgb),0.03);
+  overflow:hidden;position:relative}
+
+/* title bar */
+.t-bar{display:flex;align-items:center;padding:8px 14px;
+  background:rgba(var(--clr-accent-rgb),0.06);
+  border-bottom:1px solid rgba(var(--clr-accent-rgb),0.12);flex-shrink:0;position:relative}
+.t-dots{display:flex;gap:6px;flex-shrink:0}
+.t-dot{width:11px;height:11px;border-radius:50%;position:relative;cursor:default}
+.t-dot--r{background:var(--clr-error)}
+.t-dot--y{background:var(--clr-accent2)}
+.t-dot--g{background:var(--clr-success)}
+.t-bar-title{position:absolute;left:0;right:0;text-align:center;font-size:11px;color:var(--clr-muted);pointer-events:none;letter-spacing:.04em}
+
+/* output area */
+.t-out{flex:1;overflow-y:auto;padding:15px 20px;font-size:13px;line-height:1.35;min-height:300px;max-height:65vh;
+  mask-image:linear-gradient(transparent 0%,#000 6%);-webkit-mask-image:linear-gradient(transparent 0%,#000 6%);
+  scrollbar-width:thin;scrollbar-color:var(--clr-accent) var(--clr-bg)}
+.t-out::-webkit-scrollbar{width:5px}
+.t-out::-webkit-scrollbar-track{background:transparent}
+.t-out::-webkit-scrollbar-thumb{background:var(--clr-accent);border-radius:3px}
+
+/* line styles */
+.ln{white-space:pre-wrap;word-break:break-word;letter-spacing:.05em;margin:0;line-height:1.35em}
+.c-text{color:var(--clr-text)}
+.c-muted{color:var(--clr-muted)}
+.c-accent{color:var(--clr-accent);text-shadow:0 0 5px var(--clr-accent)}
+.c-accent2{color:var(--clr-accent2)}
+.c-success{color:var(--clr-success)}
+.c-error{color:var(--clr-error);text-shadow:0 0 5px var(--clr-error)}
+.c-primary{color:var(--clr-primary)}
+.c-cmd{color:var(--clr-command);text-shadow:0 0 5px var(--clr-accent);font-weight:700}
+.c-bold{font-weight:700}
+.c-dim{opacity:.4}
+.c-highlight{color:var(--clr-accent);text-shadow:0 0 10px var(--clr-accent);font-weight:700}
+.c-banner{color:var(--clr-accent);text-shadow:0 0 10px var(--clr-accent),-1px 0 rgba(255,0,0,0.1),1px 0 rgba(0,100,255,0.15);font-family:monospace}
+
+/* input row */
+.t-cmd{cursor:text;flex-shrink:0;padding:0 20px 15px;display:flex;align-items:center}
+.t-ps1{color:var(--clr-primary);font-size:13px;white-space:nowrap;letter-spacing:.05em;user-select:none}
+.t-input-wrap{flex:1;position:relative;margin-left:10px;height:1.4em}
+.t-input{width:100%;height:100%;background:transparent;border:none;color:var(--clr-text);font-family:var(--font-mono),monospace;
+  font-size:13px;letter-spacing:.05em;caret-color:transparent;position:relative;z-index:2}
+.t-input:focus{outline:none}
+
+/* Custom cursor (astutepixel-style glowing block) */
+.t-cursor{position:absolute;left:0;top:50%;transform:translateY(-50%);width:10px;height:1.3em;z-index:1;
+  background:linear-gradient(180deg,rgba(var(--clr-accent-rgb),0.9),rgba(var(--clr-accent-rgb),0.4));
+  box-shadow:0 0 12px var(--clr-accent),0 0 24px rgba(var(--clr-accent-rgb),0.45);
+  animation:curBlink 1.2s ease-in-out infinite;pointer-events:none}
+.t-cursor::before{content:'';position:absolute;inset:-4px;background:var(--clr-accent);filter:blur(8px);
+  opacity:0.45;border-radius:2px;animation:curGlow 3s ease-in-out infinite;pointer-events:none}
+@keyframes curBlink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes curGlow{0%,100%{opacity:.35}50%{opacity:.75}}
+
+/* Nord — calm underline cursor, slow soft blink, no glow halo */
+[data-theme="nord"] .t-cursor{top:auto;bottom:1px;transform:none;width:9px;height:2px;
+  background:var(--clr-accent2);box-shadow:0 0 6px var(--clr-accent2);
+  animation:curBlink 1.7s ease-in-out infinite}
+[data-theme="nord"] .t-cursor::before{display:none}
+
+/* Solarized — hollow outline caret, hard on/off blink, no glow */
+[data-theme="solarized"] .t-cursor{width:9px;background:transparent;border:1.5px solid var(--clr-accent2);
+  box-shadow:none;animation:curBlinkHard 1s steps(1) infinite}
+[data-theme="solarized"] .t-cursor::before{display:none}
+@keyframes curBlinkHard{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+/* Dracula — wide flickery block, dual-tone glow, fast blink */
+[data-theme="dracula"] .t-cursor{width:12px;
+  background:linear-gradient(180deg,var(--clr-accent2),rgba(255,121,198,0.4));
+  box-shadow:0 0 16px var(--clr-accent2),0 0 30px var(--clr-accent2);
+  animation:curBlink 0.75s ease-in-out infinite}
+[data-theme="dracula"] .t-cursor::before{background:var(--clr-accent2);opacity:0.5;animation:curGlow 2s ease-in-out infinite}
+
+/* Bloodwork — thin bar with a heartbeat-monitor pulse */
+[data-theme="bloodwork"] .t-cursor{width:3px;
+  background:var(--clr-accent);box-shadow:0 0 10px var(--clr-accent),0 0 20px var(--clr-error);
+  animation:curPulse 1s ease-in-out infinite}
+[data-theme="bloodwork"] .t-cursor::before{background:var(--clr-error);opacity:0.5;animation:curGlow 1.4s ease-in-out infinite}
+@keyframes curPulse{0%,100%{opacity:1;transform:translateY(-50%) scaleY(1)}50%{opacity:.3;transform:translateY(-50%) scaleY(.82)}}
+
+/* ghost autocomplete text */
+.t-ghost{color:var(--clr-primary);opacity:.35}
+
+/* suggestion chips */
+.suggestion{color:#888;background:rgba(255,255,255,0.04);border-radius:3px;margin:0 4px;padding:2px 6px;transition:all .3s}
+
+@media(prefers-reduced-motion:reduce){
+  .t-cursor,.t-cursor::before{animation:none!important}
+  body::before{animation:none!important}
+  .aether-fb{animation:none!important}
+}
+
+.content-wrap{position:relative;z-index:10;max-width:860px;margin:0 auto;padding:0 24px}
+
+.section{padding:80px 0 60px;border-top:1px solid var(--clr-border)}
+.sec-lbl{font-size:11px;color:var(--clr-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.sec-lbl::before{content:'# ';color:var(--clr-accent)}
+.sec-h{font-size:22px;font-weight:700;margin-bottom:24px}
+
+/* about */
+.about-text{max-width:640px;color:var(--clr-text);font-size:13px;line-height:1.7}
+.about-text p+p{margin-top:12px}
+.about-text strong{color:var(--clr-text);font-weight:600}
+.about-meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--clr-muted)}
+.about-meta span::before{content:'› ';color:var(--clr-accent)}
+
+/* skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.sk-card{background:rgba(var(--clr-accent-rgb),0.03);border:1px solid var(--clr-border);border-radius:4px;padding:16px;transition:border-color .2s,box-shadow .2s}
+.sk-card:hover{border-color:rgba(var(--clr-accent-rgb),0.3);box-shadow:0 0 15px rgba(var(--clr-accent-rgb),0.05)}
+.sk-cat{font-size:10px;text-transform:uppercase;color:var(--clr-accent);letter-spacing:.1em;margin-bottom:10px}
+.sk-list{list-style:none}
+.sk-list li{padding:2px 0;font-size:12px;color:var(--clr-text);letter-spacing:.03em}
+.sk-list li::before{content:'▸ ';color:var(--clr-accent2)}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:600px){.proj-grid{grid-template-columns:1fr 1fr}}
+.proj-card{background:rgba(var(--clr-accent-rgb),0.03);border:1px solid var(--clr-border);border-radius:4px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.proj-card:hover{border-color:rgba(var(--clr-accent-rgb),0.3);transform:translateY(-2px);box-shadow:0 4px 20px rgba(var(--clr-accent-rgb),0.06)}
+.proj-tab{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;
+  background:rgba(var(--clr-accent-rgb),0.06);border-bottom:1px solid var(--clr-border);font-size:11px;color:var(--clr-muted)}
+.proj-ext{color:var(--clr-accent2)}
+.proj-st{font-size:9px;padding:2px 7px;border-radius:20px;border:1px solid var(--clr-border);color:var(--clr-muted)}
+.proj-body{padding:14px 16px 16px}
+.proj-name{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--clr-text)}
+.proj-desc{color:rgba(255,255,255,0.7);font-size:11.5px;margin-bottom:10px;line-height:1.5}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.tag{font-size:9.5px;color:var(--clr-accent);background:rgba(var(--clr-accent-rgb),0.08);
+  border:1px solid rgba(var(--clr-accent-rgb),0.18);padding:2px 8px;border-radius:20px}
+.proj-links{display:flex;gap:12px;font-size:11px}
+
+/* Mouse glow */
+.mouse-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle at center, rgba(var(--clr-accent-rgb), 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* footer */
+footer{position:relative;z-index:10;padding:32px 0 40px;border-top:1px solid var(--clr-border)}
+footer .content-wrap{text-align:center;font-size:10px;color:var(--clr-muted);letter-spacing:.04em}
+
+/* responsive */
+@media(max-width:640px){
+  .terminal{min-height:360px}
+  .t-out,.t-input,.t-ps1{font-size:12px}
+  .ln{font-size:12px}
+  #hero{padding:48px 8px 16px}
+  .content-wrap{padding:0 14px}
+}
+</style>
+</head>
+<body>
+<div class="mouse-glow" id="mouse-glow"></div>
+
+<nav>
+  <div class="inner">
+    <div class="brand">dhruv<span>.dev</span></div>
+    <div class="nav-links">
+      <a href="#hero">home</a>
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#terminal-section" onclick="event.preventDefault();document.getElementById('hero').scrollIntoView({behavior:'smooth'});document.getElementById('ti').focus()">terminal</a>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-shell">
+    <aside class="cmd-sidebar" aria-label="Available terminal commands">
+      <div class="cmd-sidebar-hd">COMMANDS</div>
+      <dl class="cmd-sidebar-list">
+        <dt>about</dt><dd>Display bio and personal info</dd>
+        <dt>skills</dt><dd>List technical skills by category</dd>
+        <dt>projects</dt><dd>Browse project portfolio</dd>
+        <dt>theme</dt><dd>Cycle or set theme (theme [name])</dd>
+        <dt>clear</dt><dd>Clear terminal output</dd>
+        <dt>banner</dt><dd>Display ASCII art banner</dd>
+        <dt>whoami</dt><dd>Print current user identifier</dd>
+        <dt>date</dt><dd>Print current date and time</dd>
+        <dt>ping</dt><dd>Test response latency</dd>
+        <dt>history</dt><dd>Show last 20 commands entered</dd>
+        <dt>neofetch</dt><dd>Display system information</dd>
+        <dt>sound</dt><dd>Toggle sound, or set style: mech, soft, typewriter, synth, arcade, laser, bubble, wood, glass, drum</dd>
+        <dt>scroll</dt><dd>Scroll to section (scroll about|skills|projects)</dd>
+      </dl>
+    </aside>
+    <div class="terminal" role="application" aria-label="Interactive terminal portfolio" id="terminal-section">
+      <div class="t-bar">
+        <div class="t-dots">
+          <span class="t-dot t-dot--r"></span>
+          <span class="t-dot t-dot--y"></span>
+          <span class="t-dot t-dot--g"></span>
+        </div>
+        <span class="t-bar-title" id="bar-title">dhruv — bash</span>
+      </div>
+      <div class="t-out" id="t-out" aria-live="polite"></div>
+      <div class="t-cmd" id="t-cmd-area">
+        <span class="t-ps1" id="ps1">visitor@dhruv.dev:~$</span>
+        <div class="t-input-wrap">
+          <label for="ti" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Terminal input</label>
+          <input type="text" id="ti" class="t-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <span class="t-cursor" id="t-cursor"></span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="gh-panel" aria-label="Recent GitHub activity">
+      <div class="gh-panel-bar">
+        <div class="t-dots">
+          <span class="t-dot t-dot--r"></span>
+          <span class="t-dot t-dot--y"></span>
+          <span class="t-dot t-dot--g"></span>
+        </div>
+        <span class="gh-panel-title">github — activity</span>
+      </div>
+      <div class="gh-panel-list" id="gh-feed">
+        <div class="gh-panel-status">connecting…</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <section class="section" id="about">
+    <div class="sec-lbl">about me</div>
+    <h1 class="sec-h">Who I am</h1>
+    <div class="about-text" id="s-about"></div>
+    <div class="about-meta" id="s-about-meta"></div>
+  </section>
+  <section class="section" id="skills">
+    <div class="sec-lbl">skills</div>
+    <h2 class="sec-h">Technical Skills</h2>
+    <div class="skills-grid" id="s-skills"></div>
+  </section>
+  <section class="section" id="projects">
+    <div class="sec-lbl">projects</div>
+    <h2 class="sec-h">What I've built</h2>
+    <div class="proj-grid" id="s-projects"></div>
+  </section>
+</div>
+
+<footer>
+  <div class="content-wrap">
+    <div class="contact-row" style="display:flex;justify-content:center;gap:20px;margin-bottom:16px;font-size:11px;flex-wrap:wrap">
+      <a href="mailto:dhruvsharma8154@gmail.com">✉ dhruvsharma8154@gmail.com</a>
+      <a href="https://github.com/metalpluto" target="_blank" rel="noopener">⌂ github/metalpluto</a>
+    </div>
+    built with plain HTML/CSS/JS — try the terminal above
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+var CONFIG = {
+  name:     'Dhruv Sharma',
+  title:    'AI/ML Engineer',
+  location: 'India',
+  email:    'dhruvsharma8154@gmail.com',
+  github:   'metalpluto',
+  linkedin: '',
+  tagline:  'AI/ML Engineer · Building Agentic Applications · LangChain & LangGraph',
+  username: 'visitor',
+  hostname: 'dhruv.dev',
+  summary:  "I'm an early-career AI/ML engineer focused on LLM-powered agent systems — software where a model doesn't just respond, but calls real tools, manages real state, and completes real tasks in a loop. My recent work centers on LangChain and the Anthropic API: building tool-calling agents with persistent storage, writing unit tests that validate business logic without needing a live API connection, and structuring projects the way production codebases are — with clear separation between data, tools, and orchestration. I'm currently deepening my foundations in machine learning with scikit-learn and TensorFlow, alongside continued hands-on agent development.",
+
+  skills: {
+    'Languages':              ['Python', 'C++', 'C'],
+    'Frameworks & Libraries': ['LangChain', 'LangGraph', 'scikit-learn', 'TensorFlow', 'NumPy', 'Pandas'],
+    'Tools & Practices':      ['Git', 'GitHub', 'pytest-style testing']
+  },
+
+  projects: [
+    {
+      name:   'To-Do Agent',
+      file:   'todo_agent.py',
+      status: 'tested',
+      stack:  ['LangChain', 'LangGraph', 'create_agent'],
+      desc:   'A LangChain + Claude agent that manages tasks through natural conversation — persistent JSON storage, priorities, due dates, and 6 tools (add, list, search, complete, delete, overdue-check). Storage logic is fully unit tested with zero API dependency.',
+      repo:   'https://github.com/metalpluto/todo-agent-langchain',
+      live:   ''
+    },
+    {
+      name:   'agentkit',
+      file:   'agentkit/',
+      status: 'tested',
+      stack:  ['Anthropic API', 'Python', 'from scratch'],
+      desc:   'A minimal agent framework built from scratch against the raw Anthropic API — no LangChain. Provider-agnostic LLM interface, a @tool decorator, and a think–act loop, to understand the mechanics underneath higher-level frameworks.',
+      repo:   'https://github.com/metalpluto/agentkit',
+      live:   ''
+    },
+    {
+      name:   'dhruv.dev Terminal Portfolio',
+      file:   'portfolio.html',
+      status: 'active',
+      stack:  ['HTML', 'CSS', 'JavaScript'],
+      desc:   'A single file terminal style portfolio site with no build step and no framework, just one HTML file you can open in a browser or drop anywhere static files are served',
+      repo:   'https://github.com/metalpluto/Porfolio',
+      live:   'https://metalpluto.github.io/Porfolio/'
+    }
+  ]
+};
+
+var THEMES=['cyber','nord','solarized','dracula','bloodwork'];
+var SOUND_PROFILES=['mech','soft','typewriter','synth','arcade','laser','bubble','wood','glass','drum'];
+var CMDS=['about','skills','projects','theme','clear','banner','whoami','date','ping','history','neofetch','sound','scroll'];
+var ALL_COMPLETIONS=CMDS.concat(THEMES.map(function(t){return 'theme '+t}),SOUND_PROFILES.map(function(s){return 'sound '+s}),['sound on','sound off','sound list','scroll about','scroll skills','scroll projects']);
+
+var themeIdx=Math.max(0,THEMES.indexOf(localStorage.getItem('pf_theme')||'bloodwork'));
+var soundOn=localStorage.getItem('pf_sound')!=='false';
+var soundProfile=SOUND_PROFILES.indexOf(localStorage.getItem('pf_sound_profile'))!==-1?localStorage.getItem('pf_sound_profile'):'mech';
+var cmdHist=[],histPos=-1,histTmp='';
+var t0=Date.now();
+var audioCtx=null;
+
+var $out=document.getElementById('t-out');
+var $in=document.getElementById('ti');
+var $ps1=document.getElementById('ps1');
+var $cur=document.getElementById('t-cursor');
+
+setTheme(THEMES[themeIdx]);
+buildSections();
+printBanner();
+out('');
+out('  Welcome to Dhruv\'s terminal portfolio.','c-muted');
+out('  See the command list on the left, or just start typing.','c-muted');
+out('');
+$in.focus();
+positionCursor();
+
+function setTheme(n){document.documentElement.setAttribute('data-theme',n);localStorage.setItem('pf_theme',n)}
+
+function out(html,cls){
+  var d=document.createElement('p');
+  d.className='ln'+(cls?' '+cls:'');
+  d.innerHTML=html||'&nbsp;';
+  $out.appendChild(d);
+  $out.scrollTop=$out.scrollHeight;
+}
+
+function rule(w){
+  var s='';for(var i=0;i<(w||44);i++)s+='─';
+  out('<span class="c-dim">  '+s+'</span>');
+}
+
+function typeOut(text,cls,cb){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){out(text,cls);if(cb)cb();return}
+  var d=document.createElement('p');d.className='ln'+(cls?' '+cls:'');$out.appendChild(d);
+  var i=0;
+  (function tick(){
+    if(i<=text.length){d.textContent=text.slice(0,i);$out.scrollTop=$out.scrollHeight;i++;setTimeout(tick,18+Math.floor(Math.random()*8)-4)}
+    else{d.textContent=text;$out.scrollTop=$out.scrollHeight;if(cb)cb()}
+  })();
+}
+
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+function maxCharsFit(){
+  var cs=getComputedStyle($out);
+  var padL=parseFloat(cs.paddingLeft)||0,padR=parseFloat(cs.paddingRight)||0;
+  var avail=$out.clientWidth-padL-padR;
+  var fontVar=getComputedStyle(document.documentElement).getPropertyValue('--font-mono')||'"JetBrains Mono"';
+  var measure=document.createElement('span');
+  measure.style.cssText='position:absolute;visibility:hidden;white-space:pre;font:'+cs.fontSize+' '+fontVar+',monospace;letter-spacing:.05em';
+  measure.textContent='MMMMMMMMMM';
+  document.body.appendChild(measure);
+  var charW=measure.offsetWidth/10;
+  document.body.removeChild(measure);
+  if(!charW)return 54;
+  return Math.floor(avail/charW);
+}
+function positionCursor(){
+  var v=$in.value;
+  var measure=document.createElement('span');
+  var fontVar=getComputedStyle(document.documentElement).getPropertyValue('--font-mono')||'"JetBrains Mono"';
+  measure.style.cssText='position:absolute;visibility:hidden;white-space:pre;font:13px '+fontVar+',monospace;letter-spacing:.05em';
+  measure.textContent=v;
+  document.body.appendChild(measure);
+  var w=measure.offsetWidth;
+  document.body.removeChild(measure);
+  $cur.style.left=w+'px';
+}
+
+var SOUND_CFG={
+  mech:{ 
+    type:  {f0:1600,jitter:500,f1r:0.35,dur:0.014,vol:0.07,wave:'square'},
+    delete:{f0:500, f1:180, dur:0.03, vol:0.09,wave:'sawtooth'},
+    enter: {f0:1200,f1:2000,dur:0.05, vol:0.11,wave:'square'}
+  },
+  soft:{ 
+    type:  {f0:750, jitter:150,f1r:0.6, dur:0.022,vol:0.045,wave:'sine'},
+    delete:{f0:320, f1:140, dur:0.04, vol:0.05, wave:'sine'},
+    enter: {f0:650, f1:950, dur:0.07, vol:0.06, wave:'sine'}
+  },
+  typewriter:{ 
+    type:  {f0:2600,jitter:300,f1r:0.25,dur:0.01, vol:0.13,wave:'square'},
+    delete:{f0:900, f1:250, dur:0.025,vol:0.12,wave:'square'},
+    enter: {f0:1800,f1:400, dur:0.09, vol:0.14,wave:'triangle'}
+  },
+  synth:{ 
+    type:  {f0:2200,jitter:800,f1r:0.7, dur:0.03, vol:0.06,wave:'square'},
+    delete:{f0:220, f1:80,  dur:0.05, vol:0.08,wave:'sawtooth'},
+    enter: {f0:523, f1:1046,dur:0.12, vol:0.09,wave:'square'}
+  },
+  arcade:{ 
+    type:  {f0:1400,jitter:200,f1r:0.5, dur:0.02, vol:0.1, wave:'square'},
+    delete:{f0:600, f1:200, dur:0.03, vol:0.1, wave:'square'},
+    enter: {f0:900, f1:1500,dur:0.06, vol:0.13,wave:'square'}
+  },
+  laser:{
+    type:  {f0:3000,jitter:400,f1r:0.15,dur:0.025,vol:0.08,wave:'sawtooth'},
+    delete:{f0:1500,f1:100, dur:0.05, vol:0.09,wave:'sawtooth'},
+    enter: {f0:2500,f1:200, dur:0.1,  vol:0.12,wave:'sawtooth'}
+  },
+  bubble:{
+    type:  {f0:500, jitter:200,f1r:2.2, dur:0.03,vol:0.06,wave:'sine'},
+    delete:{f0:300, f1:150, dur:0.04,vol:0.06,wave:'sine'},
+    enter: {f0:400, f1:900, dur:0.08,vol:0.08,wave:'sine'}
+  },
+  wood:{ 
+    type:  {f0:1000,jitter:150,f1r:0.4, dur:0.015,vol:0.1, wave:'triangle'},
+    delete:{f0:600, f1:200, dur:0.02, vol:0.1, wave:'triangle'},
+    enter: {f0:800, f1:300, dur:0.05, vol:0.12,wave:'triangle'}
+  },
+  glass:{ 
+    type:  {f0:3500,jitter:600,f1r:0.85,dur:0.04,vol:0.05,wave:'sine'},
+    delete:{f0:2000,f1:1200, dur:0.05,vol:0.05,wave:'sine'},
+    enter: {f0:3000,f1:4500, dur:0.09,vol:0.07,wave:'sine'}
+  },
+  drum:{ 
+    type:  {f0:200, jitter:40, f1r:0.5, dur:0.03,vol:0.12,wave:'triangle'},
+    delete:{f0:150, f1:60,  dur:0.05,vol:0.12,wave:'triangle'},
+    enter: {f0:180, f1:80,  dur:0.08,vol:0.15,wave:'triangle'}
+  }
+};
+function click(type){
+  if(!soundOn)return;
+  if(!audioCtx){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){return}}
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  var t=audioCtx.currentTime;
+  var prof=SOUND_CFG[soundProfile]||SOUND_CFG.mech;
+  var cfg=prof[type]||prof.type;
+  var f0=cfg.f0+(cfg.jitter?Math.random()*cfg.jitter:0);
+  var f1=(cfg.f1!==undefined)?cfg.f1:f0*cfg.f1r;
+  var dur=cfg.dur,vol=cfg.vol,wave=cfg.wave;
+  var o=audioCtx.createOscillator(),g=audioCtx.createGain();
+  o.type=wave;
+  o.frequency.setValueAtTime(f0,t);
+  o.frequency.exponentialRampToValueAtTime(Math.max(30,f1),t+dur);
+  g.gain.setValueAtTime(vol,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.connect(g);g.connect(audioCtx.destination);
+  o.start(t);o.stop(t+dur);
+}
+
+function buildSections(){
+  var parts=CONFIG.summary.split('. ');
+  var aboutHtml='';
+  for(var i=0;i<parts.length;i+=2){
+    var chunk=parts.slice(i,i+2).join('. ');
+    if(!chunk.endsWith('.'))chunk+='.';
+    aboutHtml+='<p>'+chunk+'</p>';
+  }
+  document.getElementById('s-about').innerHTML=aboutHtml;
+  document.getElementById('s-about-meta').innerHTML='<span>'+esc(CONFIG.title)+'</span><span>'+esc(CONFIG.location)+'</span><span>'+esc(CONFIG.email)+'</span>';
+
+  var sh='';
+  for(var cat in CONFIG.skills){if(!CONFIG.skills.hasOwnProperty(cat))continue;
+    sh+='<div class="sk-card"><div class="sk-cat">'+esc(cat)+'</div><ul class="sk-list">';
+    CONFIG.skills[cat].forEach(function(s){sh+='<li>'+esc(s)+'</li>'});sh+='</ul></div>'}
+  document.getElementById('s-skills').innerHTML=sh;
+
+  /* projects — rendered by renderProjects(); starts with CONFIG.projects
+     as a fallback, then GH_loadProjects() below overwrites it live from GitHub */
+  renderProjects(CONFIG.projects);
+}
+
+/* renders the projects grid from a list of project objects
+   {name, file, status, stack:[...], desc, repo, live} */
+function renderProjects(list){
+  var $el=document.getElementById('s-projects');
+  if(!list||!list.length){$el.innerHTML='<p class="c-muted" style="font-size:12px">No projects to show yet.</p>';return}
+  var ph='';
+  list.forEach(function(p){
+    ph+='<div class="proj-card"><div class="proj-tab"><span>'+esc(p.file)+'</span><span class="proj-st">'+esc(p.status)+'</span></div>'+
+    '<div class="proj-body"><div class="proj-name">'+esc(p.name)+'</div><p class="proj-desc">'+esc(p.desc)+'</p>'+
+    '<div class="proj-tags">'+p.stack.map(function(t){return'<span class="tag">'+esc(t)+'</span>'}).join('')+'</div>'+
+    '<div class="proj-links">'+(p.repo?'<a href="'+esc(p.repo)+'" target="_blank" rel="noopener">Repo →</a>':'')+(p.live?'<a href="'+esc(p.live)+'" target="_blank" rel="noopener">Live →</a>':'')+'</div></div></div>'});
+  $el.innerHTML=ph;
+}
+
+function printBanner(){
+  var lines=[
+    '',
+    '  ╔═══╗ ╦  ╦ ╔═══╗ ╦   ╦ ╦   ╦',
+    '  ║   ║ ║  ║ ║   ║ ║   ║ ║   ║',
+    '  ║   ║ ╠══╣ ╠═══╝ ║   ║ ╚╗ ╔╝',
+    '  ║   ║ ║  ║ ║  ╚╗ ║   ║  ║ ║ ',
+    '  ╚═══╝ ╩  ╩ ╩   ╩ ╚═══╝  ╚═╝ ',
+    ''
+  ];
+  lines.forEach(function(l){out('<span class="c-banner">'+l+'</span>')});
+  out('  <span class="c-accent2">'+esc(CONFIG.tagline)+'</span>');
+  out('');
+}
+
+function printMiniBanner(){
+  out('<span class="c-highlight">  dhruv.dev</span> <span class="c-dim">—</span> <span class="c-muted">'+esc(CONFIG.name)+'</span>');
+  out('');
+}
+
+var CMD={};
+
+CMD.about=function(){
+  out('');
+  var fit=maxCharsFit()-8;
+  var minW=Math.max(20,Math.min(54,fit));
+  var rawName=CONFIG.name, rawTitle=CONFIG.title, rawLoc='📍 '+CONFIG.location,
+      rawEmail='✉  '+CONFIG.email, rawGithub='⌂  github.com/'+CONFIG.github;
+  var innerW=minW;
+  [rawName,rawTitle,rawLoc,rawEmail,rawGithub].forEach(function(l){if(l.length>innerW&&l.length<=minW+8)innerW=Math.min(l.length,fit)});
+
+  var words=CONFIG.summary.split(' '),curLine='',summaryLines=[];
+  words.forEach(function(w){
+    if((curLine+' '+w).trim().length>innerW){summaryLines.push(curLine.trim());curLine=w}
+    else{curLine=(curLine?curLine+' ':'')+w}
+  });
+  if(curLine.trim())summaryLines.push(curLine.trim());
+  summaryLines.forEach(function(l){if(l.length>innerW&&innerW<fit)innerW=Math.min(l.length,fit)});
+
+  var totalW=innerW+2;
+  function pad(raw){var n=innerW-raw.length;return n>0?' '.repeat(n):''}
+  function row(html,raw){out('  <span class="c-dim">│</span> '+html+pad(raw))}
+  function blank(){out('  <span class="c-dim">│</span>'+' '.repeat(totalW))}
+
+  out('  <span class="c-highlight">┌─ About '+'─'.repeat(Math.max(0,totalW-8))+'</span>');
+  row('<span class="c-bold c-text">'+esc(CONFIG.name)+'</span>', rawName);
+  row('<span class="c-accent2">'+esc(CONFIG.title)+'</span>', rawTitle);
+  row('<span class="c-muted">📍 '+esc(CONFIG.location)+'</span>', rawLoc);
+  blank();
+  summaryLines.forEach(function(l){row('<span class="c-muted">'+esc(l)+'</span>', l)});
+  blank();
+  row('<span class="c-accent">✉</span>  '+esc(CONFIG.email), rawEmail);
+  row('<span class="c-accent">⌂</span>  github.com/'+esc(CONFIG.github), rawGithub);
+  out('  <span class="c-highlight">└'+'─'.repeat(totalW)+'</span>');
+  out('');
+};
+
+CMD.skills=function(){
+  out('');out('  <span class="c-highlight">Technical Skills</span>');rule(44);
+  for(var cat in CONFIG.skills){if(!CONFIG.skills.hasOwnProperty(cat))continue;
+    out('  <span class="c-accent2">▸ '+esc(cat)+'</span>');
+    out('    <span class="c-muted">'+CONFIG.skills[cat].map(esc).join('  ·  ')+'</span>');out('')}
+};
+
+CMD.projects=function(){
+  out('');out('  <span class="c-highlight">Projects</span>');rule(44);
+  CONFIG.projects.forEach(function(p,i){
+    out('  <span class="c-highlight">'+esc(p.name)+'</span> <span class="c-dim">['+esc(p.status)+']</span>');
+    out('    <span class="c-muted">'+esc(p.desc)+'</span>');
+    out('    <span class="c-accent2">Stack:</span> <span class="c-muted">'+p.stack.map(esc).join(', ')+'</span>');
+    var lk=[];if(p.repo)lk.push('<a href="'+esc(p.repo)+'" target="_blank" rel="noopener">repo</a>');
+    if(p.live)lk.push('<a href="'+esc(p.live)+'" target="_blank" rel="noopener" style="color:var(--clr-success)">live</a>');
+    if(lk.length)out('    '+lk.join('  ·  '));if(i<CONFIG.projects.length-1)out('')});out('')
+};
+
+CMD.theme=function(a){
+  var n=a.trim().toLowerCase();
+  if(n&&THEMES.indexOf(n)!==-1){themeIdx=THEMES.indexOf(n);setTheme(n);typeOut('  Theme set to: '+n,'c-success')}
+  else if(n){out('  <span class="c-error">Unknown theme: "'+esc(n)+'"</span>');out('  <span class="c-muted">Available: '+THEMES.join(', ')+'</span>')}
+  else{themeIdx=(themeIdx+1)%THEMES.length;setTheme(THEMES[themeIdx]);typeOut('  Theme cycled to: '+THEMES[themeIdx],'c-success')}
+};
+
+CMD.clear=function(){$out.innerHTML='';printMiniBanner()};
+CMD.banner=function(){printBanner()};
+CMD.whoami=function(){typeOut('  '+CONFIG.username+'@'+CONFIG.hostname,'c-accent')};
+CMD.date=function(){var d=new Date();typeOut('  '+d.toISOString().split('T')[0]+'  '+d.toLocaleTimeString(),'c-muted')};
+CMD.ping=function(){var ms=Math.floor(Math.random()*8)+1;typeOut('  pong — '+ms+'ms','c-success')};
+
+CMD.history=function(){
+  out('');var h=cmdHist.slice(-20);
+  if(!h.length){out('  <span class="c-muted">No commands in history.</span>')}
+  else{h.forEach(function(c,i){var n=String(i+1);while(n.length<3)n=' '+n;out('  <span class="c-dim">'+n+'</span>  <span class="c-muted">'+esc(c)+'</span>')})}out('')
+};
+
+CMD.neofetch=function(){
+  var up=Math.floor((Date.now()-t0)/1000),um=Math.floor(up/60),us=up%60;
+  var ua=navigator.userAgent,br='Unknown';
+  if(ua.indexOf('Firefox')>-1)br='Firefox';else if(ua.indexOf('Edg/')>-1)br='Edge';else if(ua.indexOf('Chrome')>-1)br='Chrome';else if(ua.indexOf('Safari')>-1)br='Safari';
+  out('');
+  out('  <span class="c-highlight">┌─ neofetch ─────────────────────────────────┐</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">user</span>        <span class="c-muted">'+esc(CONFIG.username+'@'+CONFIG.hostname)+'</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">os</span>          <span class="c-muted">'+(navigator.platform||'Unknown')+'</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">browser</span>     <span class="c-muted">'+br+'</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">resolution</span>  <span class="c-muted">'+window.innerWidth+'x'+window.innerHeight+'</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">theme</span>       <span class="c-muted">'+THEMES[themeIdx]+'</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">uptime</span>      <span class="c-muted">'+um+'m '+us+'s</span>');
+  out('  <span class="c-dim">│</span>  <span class="c-accent2">sound</span>       <span class="c-muted">'+(soundOn?'on ('+soundProfile+')':'off')+'</span>');
+  out('  <span class="c-highlight">└────────────────────────────────────────────┘</span>');
+  out('');
+};
+
+CMD.sound=function(a){
+  var arg=a.trim().toLowerCase();
+  if(!arg){
+    soundOn=!soundOn;localStorage.setItem('pf_sound',soundOn?'true':'false');
+    typeOut('  Keystroke sounds: '+(soundOn?'ON 🔊':'OFF 🔇'),soundOn?'c-success':'c-muted');
+    return;
+  }
+  if(arg==='on'){soundOn=true;localStorage.setItem('pf_sound','true');typeOut('  Keystroke sounds: ON 🔊','c-success');return}
+  if(arg==='off'){soundOn=false;localStorage.setItem('pf_sound','false');typeOut('  Keystroke sounds: OFF 🔇','c-muted');return}
+  if(arg==='list'){
+    out('  <span class="c-muted">Available sound styles:</span>');
+    SOUND_PROFILES.forEach(function(p){out('  <span class="c-accent2">'+p+'</span>'+(p===soundProfile?' <span class="c-muted">(current)</span>':''))});
+    out('  <span class="c-muted">Use: sound &lt;style&gt;</span>');
+    return;
+  }
+  if(SOUND_PROFILES.indexOf(arg)!==-1){
+    soundProfile=arg;localStorage.setItem('pf_sound_profile',arg);
+    if(!soundOn){soundOn=true;localStorage.setItem('pf_sound','true')}
+    typeOut('  Sound set to: '+arg+' 🔊','c-success');
+    click('enter');
+    return;
+  }
+  out('  <span class="c-error">Unknown sound: "'+esc(arg)+'"</span>');
+  out('  <span class="c-muted">Available: '+SOUND_PROFILES.join(', ')+' | on | off | list</span>');
+};
+
+CMD.scroll=function(a){
+  var t=a.trim().toLowerCase();var ok=['about','skills','projects'];
+  if(!t){out('  <span class="c-error">Usage:</span> <span class="c-muted">scroll about | skills | projects</span>');return}
+  if(ok.indexOf(t)===-1){out('  <span class="c-error">Unknown section: "'+esc(t)+'"</span>');out('  <span class="c-muted">Available: '+ok.join(', ')+'</span>');return}
+  var el=document.getElementById(t);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});typeOut('  Scrolling to #'+t+'…','c-success')}
+};
+
+function exec(raw){
+  var s=raw.trim();if(!s)return;
+  out('<span class="c-primary">'+esc($ps1.textContent)+'</span> <span class="c-cmd">'+esc(s)+'</span>');
+  cmdHist.push(s);histPos=-1;histTmp='';
+  var sp=s.indexOf(' ');var cmd=(sp>-1?s.slice(0,sp):s).toLowerCase();var arg=sp>-1?s.slice(sp+1):'';
+  if(CMD[cmd]){CMD[cmd](arg)}
+  else{out('  <span class="c-error">bash: '+esc(cmd)+': command not found</span>');out('  <span class="c-muted">Check the command list on the left.</span>')}
+}
+$in.addEventListener('input',positionCursor);
+
+$in.addEventListener('keydown',function(e){
+  var snd='type';
+  if(e.key==='Backspace'||e.key==='Delete')snd='delete';
+  else if(e.key==='Enter')snd='enter';
+  else if(e.key.length>1 && e.key!=='ArrowUp' && e.key!=='ArrowDown' && e.key!=='Tab')snd='';
+  if(snd)click(snd);
+
+  if(e.key==='Enter'){e.preventDefault();exec($in.value);$in.value='';positionCursor()}
+  else if(e.key==='ArrowUp'){e.preventDefault();if(!cmdHist.length)return;if(histPos===-1){histTmp=$in.value;histPos=cmdHist.length-1}else if(histPos>0)histPos--;$in.value=cmdHist[histPos];positionCursor()}
+  else if(e.key==='ArrowDown'){e.preventDefault();if(histPos===-1)return;if(histPos<cmdHist.length-1){histPos++;$in.value=cmdHist[histPos]}else{histPos=-1;$in.value=histTmp}positionCursor()}
+  else if(e.key==='l'&&e.ctrlKey){e.preventDefault();CMD.clear()}
+  else if(e.key==='Tab'){
+    e.preventDefault();var v=$in.value;if(!v)return;var vl=v.toLowerCase();
+    var matches=ALL_COMPLETIONS.filter(function(c){return c.indexOf(vl)===0});
+    if(matches.length===1){$in.value=matches[0]}
+    else if(matches.length>1){var pfx=matches[0];for(var i=1;i<matches.length;i++){while(matches[i].indexOf(pfx)!==0)pfx=pfx.slice(0,-1)}if(pfx.length>v.length)$in.value=pfx}
+    positionCursor();
+  } else {
+    setTimeout(positionCursor,0);
+  }
+});
+
+/* Click-to-focus */
+document.querySelector('.terminal').addEventListener('click',function(){$in.focus()});
+
+/* Keep cursor positioned on window resize */
+window.addEventListener('resize',positionCursor);
+
+/* Mouse glow tracker */
+var $glow = document.getElementById('mouse-glow');
+window.addEventListener('mousemove', function(e){
+  if($glow){
+    $glow.style.opacity = 1;
+    $glow.style.left = e.clientX + 'px';
+    $glow.style.top = e.clientY + 'px';
+  }
+});
+window.addEventListener('mouseout', function(){
+  if($glow) $glow.style.opacity = 0;
+});
+
+})();
+</script>
+
+<!--
+     GITHUB ACTIVITY PANEL self-contained, doesn't touch
+     the terminal's own JS. Uses GitHub's public Events API
+     (no auth/token needed, works for any public GitHub user).
+     Polls every 60s. To change the user it watches, edit
+     GH_USER below (defaults to CONFIG.github if present)
+   -->
+<script>
+(function(){
+  var GH_USER = (typeof CONFIG !== 'undefined' && CONFIG.github) ? CONFIG.github : 'metalpluto';
+  var POLL_MS = 60000; // GitHub's unauthenticated rate limit is 60 req/hr
+  var $feed = document.getElementById('gh-feed');
+  if(!$feed) return;
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+  function timeAgo(iso){
+    var diff = (Date.now() - new Date(iso).getTime())/1000;
+    if(diff<60) return Math.floor(diff)+'s ago';
+    if(diff<3600) return Math.floor(diff/60)+'m ago';
+    if(diff<86400) return Math.floor(diff/3600)+'h ago';
+    return Math.floor(diff/86400)+'d ago';
+  }
+
+  // returns {icon, head, detail} for a given GitHub event
+  function describe(ev){
+    var repo = ev.repo ? ev.repo.name : '';
+    var p = ev.payload || {};
+    switch(ev.type){
+      case 'PushEvent':{
+        var n = p.commits ? p.commits.length : 0;
+        var msg = (p.commits && p.commits.length) ? p.commits[p.commits.length-1].message.split('\n')[0] : '';
+        return {icon:'⇡', head:'pushed '+n+' commit'+(n===1?'':'s')+' to', repo:repo, detail: msg?('"'+msg+'"'):''};
+      }
+      case 'PullRequestEvent':
+        return {icon:'⑃', head:'PR '+esc(p.action)+' in', repo:repo, detail:p.pull_request?('#'+p.pull_request.number+' '+p.pull_request.title):''};
+      case 'PullRequestReviewEvent':
+        return {icon:'⑃', head:'reviewed PR in', repo:repo, detail:p.pull_request?('#'+p.pull_request.number+' '+p.pull_request.title):''};
+      case 'IssuesEvent':
+        return {icon:'●', head:'issue '+esc(p.action)+' in', repo:repo, detail:p.issue?('#'+p.issue.number+' '+p.issue.title):''};
+      case 'IssueCommentEvent':
+        return {icon:'✎', head:'commented on issue in', repo:repo, detail:p.issue?('#'+p.issue.number+' '+p.issue.title):''};
+      case 'CreateEvent':
+        return {icon:'✦', head:'created '+esc(p.ref_type)+' in', repo:repo, detail:p.ref?p.ref:''};
+      case 'DeleteEvent':
+        return {icon:'✕', head:'deleted '+esc(p.ref_type)+' in', repo:repo, detail:p.ref?p.ref:''};
+      case 'WatchEvent':
+        return {icon:'★', head:'starred', repo:repo, detail:''};
+      case 'ForkEvent':
+        return {icon:'⑂', head:'forked', repo:repo, detail:''};
+      case 'ReleaseEvent':
+        return {icon:'⇧', head:'published a release in', repo:repo, detail:p.release?p.release.tag_name:''};
+      case 'PublicEvent':
+        return {icon:'⊙', head:'made public:', repo:repo, detail:''};
+      case 'CommitCommentEvent':
+        return {icon:'✎', head:'commented on a commit in', repo:repo, detail:''};
+      case 'GollumEvent':
+        return {icon:'▤', head:'updated the wiki in', repo:repo, detail:''};
+      case 'MemberEvent':
+        return {icon:'👤', head:'member '+esc(p.action)+' in', repo:repo, detail:''};
+      default:
+        return {icon:'•', head:esc(ev.type)+' in', repo:repo, detail:''};
+    }
+  }
+
+  function render(events){
+    if(!events || !events.length){
+      $feed.innerHTML = '<div class="gh-panel-status">no recent public activity</div>';
+      return;
+    }
+    var html = events.slice(0,20).map(function(ev){
+      var d = describe(ev);
+      var detail = d.detail ? '<div class="gh-ev-detail">'+esc(d.detail).slice(0,90)+'</div>' : '';
+      return '<div class="gh-ev">'+
+        '<div class="gh-ev-head"><span class="gh-ev-icon">'+d.icon+'</span> '+esc(d.head)+' <span class="gh-ev-repo">'+esc(d.repo)+'</span></div>'+
+        detail+
+        '<div class="gh-ev-time">'+timeAgo(ev.created_at)+'</div>'+
+      '</div>';
+    }).join('');
+    $feed.innerHTML = html;
+  }
+
+  function load(){
+    fetch('https://api.github.com/users/'+encodeURIComponent(GH_USER)+'/events/public')
+      .then(function(r){
+        if(!r.ok) throw new Error('status '+r.status);
+        return r.json();
+      })
+      .then(render)
+      .catch(function(err){
+        $feed.innerHTML = '<div class="gh-panel-status">couldn\'t load activity<br><span style="opacity:.6">('+esc(err.message)+')</span></div>';
+      });
+  }
+
+  load();
+  setInterval(load, POLL_MS);
+})();
+</script>
+
+<!--
+     AUTO PROJECTS pulls your public GitHub repos and
+     renders them in the "Projects" section, replacing the
+     hand-written CONFIG.projects list once loaded
+
+     Only repos tagged with the GH_PROJECT_TOPIC below (on
+     GitHub: repo → About (gear icon) → Topics) are shown
+     this is how you mark "this is a project I'm building"
+     vs. forks/experiments/cloned repos you don't want listed.
+     Forked repos are always excluded automatically
+
+     To change which topic marks a project, edit
+     GH_PROJECT_TOPIC below. Polls every 5 minutes
+     -->
+<script>
+(function(){
+  var GH_USER = (typeof CONFIG !== 'undefined' && CONFIG.github) ? CONFIG.github : 'metalpluto';
+  var GH_PROJECT_TOPIC = 'portfolio'; // tag your repos with this topic on GitHub to show them here
+  var POLL_MS = 300000; // 5 min repo lists change less often than activity
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+  function prettyName(repoName){
+    return repoName.replace(/[-_]+/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase()});
+  }
+
+  function mapRepo(r){
+    var topics=(r.topics||[]).filter(function(t){return t!==GH_PROJECT_TOPIC});
+    var stack=topics.length?topics:(r.language?[r.language]:['code']);
+    return {
+      name:   prettyName(r.name),
+      file:   r.name+(r.language?('.'+ (r.language==='Python'?'py':r.language==='JavaScript'?'js':r.language==='TypeScript'?'ts':'')) : ''),
+      status: r.archived ? 'archived' : 'active',
+      stack:  stack,
+      desc:   r.description || 'No description yet — add one in the repo\u2019s About settings.',
+      repo:   r.html_url,
+      live:   r.homepage || ''
+    };
+  }
+
+  function load(){
+    fetch('https://api.github.com/users/'+encodeURIComponent(GH_USER)+'/repos?per_page=100&sort=updated')
+      .then(function(r){
+        if(!r.ok) throw new Error('status '+r.status);
+        return r.json();
+      })
+      .then(function(repos){
+        var filtered = repos
+          .filter(function(r){ return !r.fork && r.topics && r.topics.indexOf(GH_PROJECT_TOPIC)!==-1; })
+          .sort(function(a,b){ return new Date(b.pushed_at)-new Date(a.pushed_at); })
+          .map(mapRepo);
+        if(filtered.length && typeof renderProjects === 'function'){
+          renderProjects(filtered);
+        }
+        // if nothing matches the topic, the existing CONFIG.projects
+        // rendering (already on the page) is simply left as-is
+      })
+      .catch(function(err){
+        // silent — keep whatever's already rendered (CONFIG.projects fallback)
+        console.warn('GitHub projects fetch failed:', err.message);
+      });
+  }
+
+  load();
+  setInterval(load, POLL_MS);
+})();
+</script>
+</body>
+</html>
