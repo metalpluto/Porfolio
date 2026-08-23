@@ -1,10 +1,8 @@
-# dhruv.dev — Terminal Portfolio
+# Terminal Portfolio
 
 A single-file, terminal-styled personal portfolio site. No build step, no framework, no dependencies just one `portfolio.html` you can open directly in a browser or deploy anywhere static files are served
 
 The whole site is themed as an interactive terminal: visitors type commands to explore your bio, skills, and projects, while a traditional scrollable "below-the-fold" version of the same content sits underneath for anyone who just wants to scroll
-
----
 
 ## Features
 
@@ -19,7 +17,7 @@ The whole site is themed as an interactive terminal: visitors type commands to e
 ### Commands
 | Command | What it does |
 |---|---|
-| `about` | Bio, title, location, email, GitHub — rendered in a bordered box |
+| `about` | Bio, title, location, email, GitHub rendered in a bordered box |
 | `skills` | Technical skills grouped by category |
 | `projects` | Lists your projects inline in the terminal |
 | `theme` / `theme <name>` | Cycles or sets a color theme |
@@ -33,7 +31,7 @@ The whole site is themed as an interactive terminal: visitors type commands to e
 | `neofetch` | System-info-style summary card (OS, browser, resolution, theme, sound, uptime) |
 | `scroll <section>` | Smooth-scrolls to `about`, `skills`, or `projects` below the fold |
 
-A live reference list of all commands is shown in a sidebar panel to the left of the terminal (on wide screens).
+A live reference list of all commands is shown in a sidebar panel to the left of the terminal (on wide screens)
 
 ### Themes
 5 built-in color themes, switchable live with `theme <name>`:
@@ -56,12 +54,14 @@ Each theme also has its own distinct **cursor animation style** (glow pulse, har
 - Preference is saved in `localStorage`
 
 ### Live GitHub activity panel
-An independent widget on the right side of the hero section that shows your recent public GitHub activity in real time — pushes, commits, PRs, issues, comments, stars, forks, releases, and more — pulled from GitHub's public Events API. No login or token required. Auto-refreshes every 60 seconds.
+An independent widget on the right side of the hero section that shows your recent public GitHub activity in real timepushes, commits, PRs, issues, comments, stars, forks, releases, and more pulled from GitHub's public Events API No login or token required. Auto-refreshes every 60 seconds
 
-Because it reads GitHub's public activity feed, it doesn't matter whether you pushed from VS Code, the terminal, or GitHub.com directly — it all shows up the same way.
+Because it reads GitHub's public activity feed, it doesn't matter whether you pushed from VS Code, the terminal, or GitHub.com directly it all shows up the same way.
 
-### Auto-populated Projects section
-The "Projects" section (both in the terminal `projects` command and the scrollable page below) can pull live from your public GitHub repos instead of being hand-written.
+### Auto-populated Projects section 
+The "Projects" section (both in the terminal `projects` command and the scrollable page below) can pull live from your public GitHub repos instead of being hand-written
+### Important Note
+Still in working progress, logic is still there and everything but its not being executed properly i added it here because i'll make it work and then upload the more cleaner version, right now i'm uploading projects manually on portfolio (including this one as well)
 
 **How it works:**
 - Repos tagged with the GitHub topic `portfolio` are automatically shown as projects
@@ -89,7 +89,7 @@ A traditional scrollable layout mirrors the terminal content for accessibility a
 
 ---
 
-## 🛠 Configuration
+## Configuration
 
 Nearly everything personal lives in one place — the `CONFIG` object near the top of the `<script>` block:
 
@@ -122,10 +122,10 @@ This is a single static HTML file — deploy it anywhere that serves static file
 - **Vercel / Netlify** — drag and drop, or connect the repo
 - **Any web host / VPS** — just upload the file
 
-No build step, no `npm install`, no server required.
+No build step, no `npm install`, no server required
 
 ---
 
-## 📄 License
+## License
 
 MIT — see [LICENSE](./LICENSE)
