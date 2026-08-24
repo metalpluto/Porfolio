@@ -720,8 +720,6 @@ function buildSections(){
     CONFIG.skills[cat].forEach(function(s){sh+='<li>'+esc(s)+'</li>'});sh+='</ul></div>'}
   document.getElementById('s-skills').innerHTML=sh;
 
-  /* projects — rendered by renderProjects(); starts with CONFIG.projects
-     as a fallback, then GH_loadProjects() below overwrites it live from GitHub */
   renderProjects(CONFIG.projects);
 }
 
