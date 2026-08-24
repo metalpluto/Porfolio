@@ -959,7 +959,7 @@ window.addEventListener('mouseout', function(){
     var p = ev.payload || {};
     switch(ev.type){
       case 'PushEvent':{
-        var n = p.commits ? p.commits.length : 0;
+        var n = (p.commits && p.commits.length) ? p.commits.length : (p.distinct_size || p.size || 1);
         var msg = (p.commits && p.commits.length) ? p.commits[p.commits.length-1].message.split('\n')[0] : '';
         return {icon:'⇡', head:'pushed '+n+' commit'+(n===1?'':'s')+' to', repo:repo, detail: msg?('"'+msg+'"'):''};
       }
