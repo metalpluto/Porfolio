@@ -952,17 +952,14 @@ window.addEventListener('mouseout', function(){
     if(diff<86400) return Math.floor(diff/3600)+'h ago';
     return Math.floor(diff/86400)+'d ago';
   }
-
-  // returns {icon, head, detail} for a given GitHub event
   function describe(ev){
     var repo = ev.repo ? ev.repo.name : '';
     var p = ev.payload || {};
     switch(ev.type){
-      case 'PushEvent':{
-        var n = (p.commits && p.commits.length) ? p.commits.length : (p.distinct_size || p.size || 1);
-        var msg = (p.commits && p.commits.length) ? p.commits[p.commits.length-1].message.split('\n')[0] : '';
-        return {icon:'⇡', head:'pushed '+n+' commit'+(n===1?'':'s')+' to', repo:repo, detail: msg?('"'+msg+'"'):''};
-      }
+     case 'PushEvent':{
+    var msg = (p.commits && p.commits.length) ? p.commits[p.commits.length-1].message.split('\n')[0] : (p.head_commit && p.head_commit.message ? p.head_commit.message.split('\n')[0] : '');
+    return {icon:'⇡', head:'pushed to', repo:repo, detail: msg?('"'+msg+'"'):''};
+}
       case 'PullRequestEvent':
         return {icon:'⑃', head:'PR '+esc(p.action)+' in', repo:repo, detail:p.pull_request?('#'+p.pull_request.number+' '+p.pull_request.title):''};
       case 'PullRequestReviewEvent':
