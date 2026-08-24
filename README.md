@@ -1,6 +1,6 @@
 # Terminal Portfolio
 
-A single-file, terminal-styled personal portfolio site. No build step, no framework, no dependencies just one `portfolio.html` you can open directly in a browser or deploy anywhere static files are served
+A single-file, terminal-styled personal portfolio site no build step, no framework, no dependencies just one `portfolio.html` you can open directly in a browser or deploy anywhere static files are served
 
 The whole site is themed as an interactive terminal: visitors type commands to explore your bio, skills, and projects, while a traditional scrollable "below-the-fold" version of the same content sits underneath for anyone who just wants to scroll
 
@@ -8,7 +8,7 @@ The whole site is themed as an interactive terminal: visitors type commands to e
 
 ### Interactive terminal
 - A fully working fake shell (`visitor@metalpluto:~$`) that accepts typed commands
-- Command history — cycle through previously entered commands with **↑ / ↓**
+- Command history cycle through previously entered commands with **↑ / ↓**
 - Tab-completion for every command, theme name, and sound name
 - Blinking, glowing custom cursor that repositions itself as you type
 - `Ctrl + L` clears the terminal (standard shell shortcut)
