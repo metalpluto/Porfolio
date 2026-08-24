@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terminal Portfolio</title>
+<title>Dhruv Sharma — AI/ML Engineer | Terminal Portfolio</title>
 <meta name="description" content="AI/ML Engineer specializing in LLM-powered agent systems. Interactive terminal portfolio — explore projects and skills through command-line navigation.">
 <meta name="author" content="Dhruv Sharma">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Fira+Code:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Red+Hat+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 <style>
 :root,
 :root[data-theme="cyber"] {
@@ -41,7 +41,7 @@
   --clr-prompt: #a3be8c;
   --clr-primary: #81a1c1;
   --clr-command: #eceff4;
-  --font-mono: 'Fira Code', monospace;
+  --font-mono: 'Red Hat Mono', monospace;
 }
 :root[data-theme="solarized"] {
   --clr-bg: #002b36;
@@ -89,7 +89,7 @@
   --clr-prompt: #ff3b3b;
   --clr-primary: #e3342f;
   --clr-command: #f1dcdc;
-  --font-mono: 'Share Tech Mono', monospace;
+  --font-mono: 'VT323', monospace;
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -139,7 +139,7 @@ nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-item
 .nav-links a:hover{color:var(--clr-accent);text-decoration:underline;text-underline-offset:6px}
 @media(max-width:640px){.nav-links{display:none}}
 
-#hero{position:relative;z-index:10;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:90px 16px;scroll-snap-align:start}
+#hero{position:relative;z-index:10;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 16px;scroll-snap-align:start}
 
 .hero-shell{position:relative;display:flex;align-items:stretch;justify-content:center;width:100%;max-width:860px}
 
@@ -175,6 +175,11 @@ nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-item
   border-bottom:1px solid rgba(var(--clr-accent-rgb),0.12);flex-shrink:0;position:relative}
 .gh-panel-bar .t-dot{width:9px;height:9px}
 .gh-panel-title{position:absolute;left:0;right:0;text-align:center;font-size:11px;color:var(--clr-muted);pointer-events:none;letter-spacing:.04em}
+.gh-avatar{width:18px;height:18px;border-radius:50%;position:absolute;right:12px;top:50%;transform:translateY(-50%);border:1px solid var(--clr-accent);display:none}
+.gh-status-dot{width:7px;height:7px;border-radius:50%;position:absolute;right:10px;top:calc(50% - 7px);border:1px solid var(--clr-bg,#0b0f12);display:none}
+.gh-status-dot--on{background:#3ddc84}
+.gh-status-dot--off{background:var(--clr-muted)}
+.gh-last-active{padding:6px 14px 0;font-size:10.5px;color:var(--clr-muted);text-align:center}
 .gh-panel-list{padding:12px 14px;overflow-y:auto;font-size:11.5px;line-height:1.6;flex:1;
   scrollbar-width:thin;scrollbar-color:var(--clr-accent) var(--clr-bg)}
 .gh-panel-list::-webkit-scrollbar{width:5px}
@@ -453,7 +458,10 @@ footer .content-wrap{text-align:center;font-size:10px;color:var(--clr-muted);let
           <span class="t-dot t-dot--g"></span>
         </div>
         <span class="gh-panel-title">github — activity</span>
+        <img class="gh-avatar" id="gh-avatar" alt="">
+        <span class="gh-status-dot" id="gh-status-dot"></span>
       </div>
+      <div class="gh-last-active" id="gh-last-active"></div>
       <div class="gh-panel-list" id="gh-feed">
         <div class="gh-panel-status">connecting…</div>
       </div>
@@ -504,7 +512,7 @@ var CONFIG = {
   tagline:  'AI/ML Engineer · Building Agentic Applications · LangChain & LangGraph',
   username: 'visitor',
   hostname: 'dhruv.dev',
-  summary:  "I'm an early-career AI/ML engineer focused on LLM-powered agent systems software where a model doesn't just respond, but calls real tools, manages real state, and completes real tasks in a loop. My recent work centers on LangChain and the Anthropic API: building tool-calling agents with persistent storage, writing unit tests that validate business logic without needing a live API connection, and structuring projects the way production codebases are with clear separation between data, tools, and orchestration. I'm currently deepening my foundations in machine learning with scikit-learn and TensorFlow, alongside continued hands-on agent development.",
+  summary:  "I'm an early-career AI/ML engineer focused on LLM-powered agent systems — software where a model doesn't just respond, but calls real tools, manages real state, and completes real tasks in a loop. My recent work centers on LangChain and the Anthropic API: building tool-calling agents with persistent storage, writing unit tests that validate business logic without needing a live API connection, and structuring projects the way production codebases are — with clear separation between data, tools, and orchestration. I'm currently deepening my foundations in machine learning with scikit-learn and TensorFlow, alongside continued hands-on agent development.",
 
   skills: {
     'Languages':              ['Python', 'C++', 'C'],
@@ -952,14 +960,16 @@ window.addEventListener('mouseout', function(){
     if(diff<86400) return Math.floor(diff/3600)+'h ago';
     return Math.floor(diff/86400)+'d ago';
   }
+
+  // returns {icon, head, detail} for a given GitHub event
   function describe(ev){
     var repo = ev.repo ? ev.repo.name : '';
     var p = ev.payload || {};
     switch(ev.type){
-     case 'PushEvent':{
-    var msg = (p.commits && p.commits.length) ? p.commits[p.commits.length-1].message.split('\n')[0] : (p.head_commit && p.head_commit.message ? p.head_commit.message.split('\n')[0] : '');
-    return {icon:'⇡', head:'pushed to', repo:repo, detail: msg?('"'+msg+'"'):''};
-}
+      case 'PushEvent':{
+        var msg = (p.commits && p.commits.length) ? p.commits[p.commits.length-1].message.split('\n')[0] : (p.head_commit && p.head_commit.message ? p.head_commit.message.split('\n')[0] : '');
+        return {icon:'⇡', head:'pushed to', repo:repo, detail: msg?('"'+msg+'"'):''};
+      }
       case 'PullRequestEvent':
         return {icon:'⑃', head:'PR '+esc(p.action)+' in', repo:repo, detail:p.pull_request?('#'+p.pull_request.number+' '+p.pull_request.title):''};
       case 'PullRequestReviewEvent':
@@ -1006,6 +1016,20 @@ window.addEventListener('mouseout', function(){
       '</div>';
     }).join('');
     $feed.innerHTML = html;
+    var $avatar = document.getElementById('gh-avatar');
+    if($avatar && events[0] && events[0].actor && events[0].actor.avatar_url){
+      $avatar.src = events[0].actor.avatar_url;
+      $avatar.style.display = 'block';
+    }
+    var $dot = document.getElementById('gh-status-dot');
+    var $lastActive = document.getElementById('gh-last-active');
+    if($dot && $lastActive && events[0]){
+      var mins = (Date.now() - new Date(events[0].created_at).getTime()) / 60000;
+      var isActive = mins < 15; // treat activity in last 15 min as "active now"
+      $dot.style.display = 'block';
+      $dot.className = 'gh-status-dot ' + (isActive ? 'gh-status-dot--on' : 'gh-status-dot--off');
+      $lastActive.textContent = isActive ? 'active now' : ('last active ' + timeAgo(events[0].created_at));
+    }
   }
 
   function load(){
@@ -1036,7 +1060,7 @@ window.addEventListener('mouseout', function(){
      vs. forks/experiments/cloned repos you don't want listed.
      Forked repos are always excluded automatically
 
-     to change which topic marks a project, edit
+     To change which topic marks a project, edit
      GH_PROJECT_TOPIC below. Polls every 5 minutes
      -->
 <script>
