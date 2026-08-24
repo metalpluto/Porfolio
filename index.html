@@ -139,7 +139,7 @@ nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-item
 .nav-links a:hover{color:var(--clr-accent);text-decoration:underline;text-underline-offset:6px}
 @media(max-width:640px){.nav-links{display:none}}
 
-#hero{position:relative;z-index:10;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 16px;scroll-snap-align:start}
+#hero{position:relative;z-index:10;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:90px 16px;scroll-snap-align:start}
 
 .hero-shell{position:relative;display:flex;align-items:stretch;justify-content:center;width:100%;max-width:860px}
 
@@ -191,6 +191,39 @@ nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-item
 
 @media(max-width:1600px){
   .gh-panel{display:none}
+}
+
+/* STACKED LAYOUT — small screens only (phones/small tablets),
+   where even shrunk side-by-side boxes won't fit. */
+@media(max-width:900px){
+  .hero-shell{flex-direction:column;align-items:center;gap:16px}
+  .cmd-sidebar,.gh-panel{
+    display:flex !important;
+    position:static;
+    width:100%;
+    max-width:860px;
+  }
+  .cmd-sidebar-list,.gh-panel-list{max-height:240px}
+  .terminal{order:1}
+  .cmd-sidebar{order:2}
+  .gh-panel{order:3}
+}
+
+/* SIDE-BY-SIDE, SCALED DOWN — laptops and tablets (901px-1600px).
+   Same left/right arrangement as the original >1600px layout,
+   just narrower boxes so all three fit without overlapping. */
+@media(min-width:901px) and (max-width:1600px){
+  .hero-shell{
+    max-width:100%;
+    gap:clamp(10px,1.5vw,20px);
+  }
+  .cmd-sidebar,.gh-panel{
+    display:flex !important;
+    position:static;
+  }
+  .cmd-sidebar{width:clamp(170px,20vw,310px);right:auto}
+  .gh-panel{width:clamp(150px,16vw,230px);left:auto}
+  .terminal{max-width:min(860px,55vw)}
 }
 
 .terminal{width:100%;max-width:860px;min-height:460px;display:flex;flex-direction:column;
@@ -497,6 +530,15 @@ var CONFIG = {
       desc:   'A minimal agent framework built from scratch against the raw Anthropic API — no LangChain. Provider-agnostic LLM interface, a @tool decorator, and a think–act loop, to understand the mechanics underneath higher-level frameworks.',
       repo:   'https://github.com/metalpluto/agentkit',
       live:   ''
+    },
+    {
+      name:   'dhruv.dev Terminal Portfolio',
+      file:   'portfolio.html',
+      status: 'active',
+      stack:  ['HTML', 'CSS', 'JavaScript'],
+      desc:   'A single file terminal style portfolio site with no build step and no framework, just one HTML file you can open in a browser or drop anywhere static files are served',
+      repo:   'https://github.com/metalpluto/Porfolio',
+      live:   'https://metalpluto.github.io/Porfolio/'
     }
   ]
 };
