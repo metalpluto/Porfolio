@@ -7,7 +7,7 @@ The whole site is themed as an interactive terminal: visitors type commands to e
 ## Features
 
 ### Interactive terminal
-- A fully working fake shell (`visitor@dhruv.dev:~$`) that accepts typed commands
+- A fully working fake shell (`visitor@metalpluto:~$`) that accepts typed commands
 - Command history — cycle through previously entered commands with **↑ / ↓**
 - Tab-completion for every command, theme name, and sound name
 - Blinking, glowing custom cursor that repositions itself as you type
