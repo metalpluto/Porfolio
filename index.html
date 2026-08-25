@@ -163,7 +163,7 @@ nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-item
    To resize it: edit the "width" value below.*/
 .gh-panel{
 
-  position:absolute;top:0;bottom:0;left:calc(100% + 20px);
+  position:absolute;top:0;bottom:0;left:calc(100% + 76px);
   width:230px;
   /* --------------------------------------------------- */
   flex-shrink:0;display:flex;flex-direction:column;
@@ -231,7 +231,7 @@ nav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-item
   .terminal{max-width:min(860px,55vw)}
 }
 
-.terminal{width:100%;max-width:860px;min-height:460px;display:flex;flex-direction:column;
+.terminal{position:relative;left:20px;width:100%;max-width:860px;min-height:460px;display:flex;flex-direction:column;
   background:var(--clr-surface);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   border:1px solid rgba(var(--clr-accent-rgb),0.15);border-radius:0;
   box-shadow:0 0 40px rgba(0,0,0,0.5),0 0 80px rgba(var(--clr-accent-rgb),0.03);
@@ -512,11 +512,11 @@ var CONFIG = {
   tagline:  'AI/ML Engineer · Building Agentic Applications · LangChain & LangGraph',
   username: 'visitor',
   hostname: 'metalpluto',
-  summary:  "I'm an early-career AI/ML engineer focused on LLM-powered agent systems software manages real state, and completes real tasks in a loop. My recent work centers on LangChain and the Anthropic API: building tool-calling agents with persistent storage, writing unit tests that validate business logic without needing a live API connection, and structuring projects the way production codebases are with clear separation between data, tools, and orchestration. I'm currently deepening my foundations in machine learning with scikit-learn and TensorFlow, alongside continued hands-on agent development",
+  summary:  "I'm AI/ML engineer focused on LLM-powered agent systems software that manages real state and completes real tasks in a loop, not just single-turn responses. I build things from first principles before reaching for frameworks, so I actually understand what's happening underneath tool-calling, state management, the think-act loop. I write unit tests that validate business logic without needing a live connection, and I structure projects the way production codebases are, with clear separation between data, tools, and orchestration. That's shown up in a from-scratch agent framework, an NLP and agent pipeline for classifying and acting on documents, and this portfolio itself. I'm currently deepening my foundations in machine learning with scikit-learn and TensorFlow, alongside continued hands on agent development",
 
   skills: {
-    'Languages':              ['Python', 'C++', 'C'],
-    'Frameworks & Libraries': ['LangChain', 'LangGraph', 'scikit-learn', 'TensorFlow', 'NumPy', 'Pandas'],
+    'Languages':              ['Python', 'C++', 'C', 'JavaScript'],
+    'Frameworks & Libraries': ['LangChain', 'LangGraph', 'scikit-learn', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib'],
     'Tools & Practices':      ['Git', 'GitHub', 'pytest-style testing']
   },
 
@@ -547,7 +547,16 @@ var CONFIG = {
       desc:   'A single file terminal style portfolio site with no build step and no framework, just one HTML file you can open in a browser or drop anywhere static files are served',
       repo:   'https://github.com/metalpluto/Porfolio',
       live:   'https://metalpluto.github.io/Porfolio/'
+    },
+    {
+      name:   'Medical Claim Analyzer',
+      file:   'main.py',
+      status: 'active',
+      stack:  ['Python', 'scikit-learn', 'LangGraph', 'LangChain', 'Gemini API', 'regex/NLP'],
+      desc:   'A denial letter pipeline that extracts structured claim data with regex NLP, predicts the denial category with a TF-IDF + Logistic Regression classifier, then routes through a LangGraph agent that drafts an appeal letter or recommends an internal fix depending on the category',
+      repo: 'https://github.com/metalpluto/Medical-Claim-Analyzer'
     }
+    
   ]
 };
 
