@@ -58,11 +58,6 @@ An independent widget on the right side of the hero section that shows your rece
 
 Because it reads GitHub's public activity feed, it doesn't matter whether you pushed from VS Code, the terminal, or GitHub.com directly it all shows up the same way.
 
-### Auto-populated Projects section 
-The "Projects" section (both in the terminal `projects` command and the scrollable page below) can pull live from your public GitHub repos instead of being hand-written
-### Important Note for Auto-populated Projects section
-Still in **working progress**, logic is still there and everything but its not being executed properly i added it here because i'll make it work and then upload the more cleaner version, right now i'm uploading projects manually on portfolio (including this one as well)
-
 **How it works:**
 - Repos tagged with the GitHub topic `portfolio` are automatically shown as projects
 - Forked repos are always excluded
