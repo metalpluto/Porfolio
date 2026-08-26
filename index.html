@@ -542,7 +542,7 @@ var CONFIG = {
     {
       name:   'Terminal Portfolio (still in working)',
       file:   'index.html',
-      status: 'active',
+      status: 'Active',
       stack:  ['HTML', 'CSS', 'JavaScript'],
       desc:   'A single file terminal style portfolio site with no build step and no framework, just one HTML file you can open in a browser or drop anywhere static files are served',
       repo:   'https://github.com/metalpluto/Porfolio',
@@ -551,7 +551,7 @@ var CONFIG = {
     {
       name:   'Medical Claim Analyzer',
       file:   'main.py',
-      status: 'active',
+      status: 'Tested',
       stack:  ['Python', 'scikit-learn', 'LangGraph', 'LangChain', 'Gemini API', 'regex/NLP'],
       desc:   'A denial letter pipeline that extracts structured claim data with regex NLP, predicts the denial category with a TF-IDF + Logistic Regression classifier, then routes through a LangGraph agent that drafts an appeal letter or recommends an internal fix depending on the category',
       repo: 'https://github.com/metalpluto/Medical-Claim-Analyzer'
@@ -1048,74 +1048,6 @@ window.addEventListener('mouseout', function(){
       .then(render)
       .catch(function(err){
         $feed.innerHTML = '<div class="gh-panel-status">couldn\'t load activity<br><span style="opacity:.6">('+esc(err.message)+')</span></div>';
-      });
-  }
-
-  load();
-  setInterval(load, POLL_MS);
-})();
-</script>
-
-<!--
-     AUTO PROJECTS pulls your public GitHub repos and
-     renders them in the "Projects" section, replacing the
-     hand-written CONFIG.projects list once loaded
-
-     Only repos tagged with the GH_PROJECT_TOPIC below (on
-     GitHub: repo → About (gear icon) → Topics) are shown
-     this is how you mark "this is a project I'm building"
-     vs. forks/experiments/cloned repos you don't want listed.
-     Forked repos are always excluded automatically
-
-     To change which topic marks a project, edit
-     GH_PROJECT_TOPIC below. Polls every 5 minutes
-     -->
-<script>
-(function(){
-  var GH_USER = (typeof CONFIG !== 'undefined' && CONFIG.github) ? CONFIG.github : 'metalpluto';
-  var GH_PROJECT_TOPIC = 'portfolio'; // tag your repos with this topic on GitHub to show them here
-  var POLL_MS = 300000; // 5 min repo lists change less often than activity
-
-  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-
-  function prettyName(repoName){
-    return repoName.replace(/[-_]+/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase()});
-  }
-
-  function mapRepo(r){
-    var topics=(r.topics||[]).filter(function(t){return t!==GH_PROJECT_TOPIC});
-    var stack=topics.length?topics:(r.language?[r.language]:['code']);
-    return {
-      name:   prettyName(r.name),
-      file:   r.name+(r.language?('.'+ (r.language==='Python'?'py':r.language==='JavaScript'?'js':r.language==='TypeScript'?'ts':'')) : ''),
-      status: r.archived ? 'archived' : 'active',
-      stack:  stack,
-      desc:   r.description || 'No description yet — add one in the repo\u2019s About settings.',
-      repo:   r.html_url,
-      live:   r.homepage || ''
-    };
-  }
-
-  function load(){
-    fetch('https://api.github.com/users/'+encodeURIComponent(GH_USER)+'/repos?per_page=100&sort=updated')
-      .then(function(r){
-        if(!r.ok) throw new Error('status '+r.status);
-        return r.json();
-      })
-      .then(function(repos){
-        var filtered = repos
-          .filter(function(r){ return !r.fork && r.topics && r.topics.indexOf(GH_PROJECT_TOPIC)!==-1; })
-          .sort(function(a,b){ return new Date(b.pushed_at)-new Date(a.pushed_at); })
-          .map(mapRepo);
-        if(filtered.length && typeof renderProjects === 'function'){
-          renderProjects(filtered);
-        }
-        // if nothing matches the topic, the existing CONFIG.projects
-        // rendering (already on the page) is simply left as-is
-      })
-      .catch(function(err){
-        // silent — keep whatever's already rendered (CONFIG.projects fallback)
-        console.warn('GitHub projects fetch failed:', err.message);
       });
   }
 
