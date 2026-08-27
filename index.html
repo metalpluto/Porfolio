@@ -525,7 +525,7 @@ var CONFIG = {
       name:   'ToDo Agent',
       file:   'todo_agent.py',
       status: 'tested',
-      stack:  ['LangChain', 'LangGraph', 'create_agent'],
+      stack:  ['LangChain', 'LangGraph',],
       desc:   'A LangChain + Gemini agent that manages tasks through natural conversation persistent JSON storage, priorities, due dates, and 6 tools (add, list, search, complete, delete, overdue-check). Storage logic is fully unit tested with zero API dependency',
       repo:   'https://github.com/metalpluto/todo-agent-langchain',
       live:   ''
@@ -534,8 +534,8 @@ var CONFIG = {
       name:   'agent framework',
       file:   'agentkit',
       status: 'tested',
-      stack:  ['Anthropic API', 'Python', 'from scratch'],
-      desc:   'A minimal agent framework built from scratch against the raw Anthropic API no LangChain provider agnostic LLM interface, a @tool decorator, and a think–act loop, to understand the mechanics underneath higher-level frameworks',
+      stack:  [ 'Python',],
+      desc:   'A minimal agent framework built from scratch against the raw GEMINI API no LangChain provider agnostic LLM interface, a @tool decorator, and a think–act loop, to understand the mechanics underneath higher-level frameworks',
       repo:   'https://github.com/metalpluto/agentkit',
       live:   ''
     },
@@ -565,7 +565,7 @@ var SOUND_PROFILES=['mech','soft','typewriter','synth','arcade','laser','bubble'
 var CMDS=['about','skills','projects','theme','clear','banner','whoami','date','ping','history','neofetch','sound','scroll'];
 var ALL_COMPLETIONS=CMDS.concat(THEMES.map(function(t){return 'theme '+t}),SOUND_PROFILES.map(function(s){return 'sound '+s}),['sound on','sound off','sound list','scroll about','scroll skills','scroll projects']);
 
-var themeIdx=Math.max(0,THEMES.indexOf(localStorage.getItem('pf_theme')||'bloodwork'));
+var themeIdx=Math.max(0,THEMES.indexOf(localStorage.getItem('pf_theme')||'cyber'));
 var soundOn=localStorage.getItem('pf_sound')!=='false';
 var soundProfile=SOUND_PROFILES.indexOf(localStorage.getItem('pf_sound_profile'))!==-1?localStorage.getItem('pf_sound_profile'):'mech';
 var cmdHist=[],histPos=-1,histTmp='';
