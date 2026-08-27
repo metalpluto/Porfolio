@@ -567,7 +567,7 @@ var ALL_COMPLETIONS=CMDS.concat(THEMES.map(function(t){return 'theme '+t}),SOUND
 
 var themeIdx=Math.max(0,THEMES.indexOf(localStorage.getItem('pf_theme')||'cyber'));
 var soundOn=localStorage.getItem('pf_sound')!=='false';
-var soundProfile=SOUND_PROFILES.indexOf(localStorage.getItem('pf_sound_profile'))!==-1?localStorage.getItem('pf_sound_profile'):'mech';
+var soundProfile=SOUND_PROFILES.indexOf(localStorage.getItem('pf_sound_profile'))!==-1?localStorage.getItem('pf_sound_profile'):'typewriter';
 var cmdHist=[],histPos=-1,histTmp='';
 var t0=Date.now();
 var audioCtx=null;
