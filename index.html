@@ -607,8 +607,15 @@ var CONFIG = {
       stack:  ['Python', 'scikit-learn', 'LangGraph', 'LangChain', 'Gemini API', 'regex/NLP'],
       desc:   'A denial letter pipeline that extracts structured claim data with regex NLP, predicts the denial category with a TF-IDF + Logistic Regression classifier, then routes through a LangGraph agent that drafts an appeal letter or recommends an internal fix depending on the category',
       repo: 'https://github.com/metalpluto/Medical-Claim-Analyzer'
+    },
+     {
+      name:   'Policy Denial RAG Assistant',
+      file:   'main.py',
+      status: 'Tested',
+      stack:  ['Python', 'scikit-learn', 'RAG', 'Docker', 'Gemuni'],
+      desc:   'A retrieval-augmented question answering system for medical claim denial policy. TF-IDF retrieval runs fully offline against a local policy knowledge base, with an optional Gemini-powered generation step that answers in plain language and cites its source document with full pytest coverage on the retrieval core and a Dockerized entrypoint',
+      repo: 'https://github.com/metalpluto/Denial-Policy'
     }
-    
   ]
 };
 
