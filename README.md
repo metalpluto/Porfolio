@@ -1,13 +1,12 @@
 # Terminal Portfolio
 
-A single-file, terminal-styled personal portfolio site no build step, no framework, no dependencies just one `portfolio.html` you can open directly in a browser or deploy anywhere static files are served
-
+A single-file, terminal-styled personal portfolio site no build step, no framework, no dependencies.
 The whole site is themed as an interactive terminal: visitors type commands to explore your bio, skills, and projects, while a traditional scrollable "below-the-fold" version of the same content sits underneath for anyone who just wants to scroll
 
 ## Features
 
 ### Interactive terminal
-- A fully working fake shell (`visitor@metalpluto:~$`) that accepts typed commands
+- A fully working fake shell (`metalpluto`) that accepts typed commands
 - Command history cycle through previously entered commands with **↑ / ↓**
 - Tab-completion for every command, theme name, and sound name
 - Blinking, glowing custom cursor that repositions itself as you type
@@ -54,21 +53,9 @@ Each theme also has its own distinct **cursor animation style** (glow pulse, har
 - Preference is saved in `localStorage`
 
 ### Live GitHub activity panel
-An independent widget on the right side of the hero section that shows your recent public GitHub activity in real timepushes, commits, PRs, issues, comments, stars, forks, releases, and more pulled from GitHub's public Events API No login or token required. Auto-refreshes every 60 seconds
+An independent widget on the bottom of the hero section that shows your recent public GitHub activity in real timepushes, commits, PRs, issues, comments, stars, forks, releases, and more pulled from GitHub's public Events API No login or token required. Auto-refreshes every 60 seconds
 
 Because it reads GitHub's public activity feed, it doesn't matter whether you pushed from VS Code, the terminal, or GitHub.com directly it all shows up the same way.
-
-**How it works:**
-- Repos tagged with the GitHub topic `portfolio` are automatically shown as projects
-- Forked repos are always excluded
-- The repo's **About → Description** becomes the project's write-up
-- Any other **topics** on the repo become its tech-stack tags (falls back to the repo's primary language if none are set)
-- The repo's **Website** field (if set) becomes the "Live →" link
-- Refreshes automatically every 5 minutes
-- If no tagged repos are found (or the fetch fails), the site falls back to the hand-written project list in `CONFIG.projects` — nothing breaks
-
-To feature a project: on GitHub, open the repo → the ⚙️ gear icon next to **About** → add a description, add the topic `portfolio` (plus any tech-stack topics you like) → save.
-
 ### Below-the-fold sections
 A traditional scrollable layout mirrors the terminal content for accessibility and for visitors who prefer scrolling to typing:
 - **About** — bio paragraphs + meta info
