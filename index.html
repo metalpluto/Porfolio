@@ -567,7 +567,7 @@ var CONFIG = {
   summary: "I'm AI/ML engineer focused on LLM-powered agent systems software that manages real state and completes real tasks in a loop. I build things from first principles before reaching for frameworks, so I actually understand what's happening underneath tool calling, state management, the think act loop. I write unit tests that isolate and validate core business logic, and I structure projects the way production codebases are, with clear separation between data, tools, and orchestration I'm currently deepening my foundations in machine learning with scikit-learn and TensorFlow, alongside continued hands-on agent development",
 
   skills: {
-    'Languages':              ['Python', 'C++', 'C', 'JavaScript'],
+    'Languages':              ['Python', 'C++', 'C', 'JavaScript', 'PHP', 'SQL'],
     'Frameworks & Libraries': ['LangChain', 'LangGraph', 'scikit-learn', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib'],
     'Tools & Practices':      ['Git', 'GitHub', 'pytest-style testing']
   },
@@ -665,8 +665,7 @@ function renderSysStats(){
 }
 renderSysStats();
 
-/* Node-chain popovers: clicking a chip expands/collapses its
-   panel inline. Clicking elsewhere, or the other chip, closes it. */
+
 (function setupNodeChips(){
   var pairs=[
     {chip:document.getElementById('cmds-chip'),pop:document.getElementById('cmds-popover')},
